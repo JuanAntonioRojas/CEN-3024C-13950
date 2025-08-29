@@ -1,0 +1,20 @@
+Enheduanna,12 Ziggurat Rd Ur IQ,555-555-0101,enheduanna@ur.iq
+Sin-leqi-unninni,44 IshtarGate Blvd Babylon IQ,555-555-0102,sinleqi@babylon.iq
+Homer,7 Achaean Way Chios GR,555-555-0103,homer@chios.gr
+Sappho,21 Lesbos Lane Mytilene GR,555-555-0104,sappho@lesbos.gr
+Sophocles,18 Agora St Athens GR,555-555-0105,sophocles@athens.gr
+Plato,4 Academy Pl Athens GR,555-555-0106,plato@athens.gr
+Virgil,99 Via Appia Rome IT,555-555-0107,virgil@roma.it
+Murasaki Shikibu,100 Heian Court Rd Kyoto JP,555-555-0108,murasaki.shikibu@kyoto.jp
+Dante Alighieri,13 PonteVecchio Way Florence IT,555-555-0109,dante@firenze.it
+Rumi,1 Sema Square Konya TR,555-555-0110,rumi@konya.tr
+Geoffrey Chaucer,8 Canterbury Rd London GB,555-555-0111,chaucer@london.uk
+Miguel de Cervantes,23 LaMancha Ave Madrid ES,555-555-0112,cervantes@madrid.es
+William Shakespeare,26 Avon Street Stratford GB,555-555-0113,shakespeare@stratford.uk
+Jane Austen,5 Regency Row Bath GB,555-555-0114,jane.austen@bath.uk
+Charles Dickens,17 Fleet Street London GB,555-555-0115,cdickens@london.uk
+Fyodor Dostoevsky,11 Nevsky  SaintPetersburg RU,555-555-0116,dostoevsky@spb.ru
+Leo Tolstoy,3 Yasnaya Lane Tula RU,555-555-0117,ltolstoy@tula.ru
+James Joyce,62 Ulysses Way Dublin IE,555-555-0118,james.joyce@dublin.ie
+Gabriel Garcia Marquez,50 Macondo Ave Bogota CO,555-555-0119,ggmarquez@bogota.co
+Haruki Murakami,77 Shibuya Crossing Rd Tokyo JP,555-555-0120,h.murakami@tokyo.jp
