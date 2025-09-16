@@ -1,0 +1,17 @@
+SKU,Name,Description,Qty,Price
+CPU-001,Intel Core i7,12th Gen Core i7,1,349.99
+CPU-002,AMD Ryzen 7 5800X,8-core, 16-thread processor,1,239.00
+MEM-001,Corsair Vengeance LPX 16GB RAM,2x8GB DDR4 3200MHz,2,49.99
+MEM-002,G.Skill Trident Z RGB 32GB RAM,2x16GB DDR4 3600MHz,2,89.99
+MB-001,MSI PRO Z690-A,Intel Z690 DDR4 ATX Motherboard,1,189.99
+MB-002,ASUS ROG Strix B550-F,AMD B550 ATX Gaming Motherboard,1,179.99
+GPU-001,NVIDIA GeForce RTX 3060,12GB GDDR6,1,329.00
+GPU-002,AMD Radeon RX 6600,8GB GDDR6,1,209.00
+STO-001,Samsung 970 EVO Plus 1TB SSD,NVMe M.2 internal SSD,1,99.99
+STO-002,Seagate Barracuda 2TB HDD,7200 RPM,1,54.99
+PSU-001,Corsair RM750e,750W 80 Plus Gold PSU,1,99.99
+PSU-002,EVGA 600 BA,600W 80 Plus Bronze PSU,1,64.99
+CAS-001,Lian Li Lancool 216,Mid-Tower ATX Case,1,99.99
+CAS-002,NZXT H5 Flow,Mid-Tower ATX Case,1,89.99
+COO-001,Noctua NH-D15,Premium air cooler,1,109.95
+COO-002,Corsair iCUE H100i,240mm AIO liquid cooler,1,149.99
