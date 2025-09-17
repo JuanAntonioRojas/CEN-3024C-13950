@@ -11,7 +11,10 @@
     -fx-font-size: 14px;
 }
 
-/* --- Header Styling --- */
+
+
+
+/*   Header Styling   */
 .header {
     /*-fx-background-color: #34495e;*/
     -fx-padding: 15px 20px;
@@ -37,24 +40,16 @@
     /* -fx-background-color: #add8ee; Dark gray line */
     -fx-padding: 10px 0 10px 0;           /*  Some vertical space */
 }
-
-/* Style header buttons */
-.header .button {
-    -fx-background-color: #34495e; /* Slightly lighter than header */
-    -fx-text-fill: white;
-    -fx-font-size: 14px;
-    -fx-padding: 8px 15px;
-    -fx-background-radius: 5px;
-    -fx-border-color: #4a6784;
-    -fx-border-width: 1px;
-}
-
-.header .button:hover {
-    -fx-background-color: #4a6784;
+.tooltip {
+    -fx-font-size: 16px; /* Makes the font bigger */
+    -fx-background-color: #333333; /* Sets a dark background color */
+    -fx-text-fill: #FFFFFF; /* Sets the text color to white for contrast */
 }
 
 
-/* --- Sidebar Styling --- */
+
+
+/*   Sidebar  */
 .sidebar {
     -fx-background-color: #34495e; /* Darker blue/gray for sidebar */
     -fx-padding: 20px 10px;
@@ -74,13 +69,18 @@
     -fx-background-color: #4a6784; /* Highlight on hover */
 }
 
-/* Style for selected sidebar button (if you implement selection logic) */
-.sidebar .button:focused { /* Or use a custom class like .selected-button */
+/*  Selected sidebar button  */
+.sidebar .button:focused {
     -fx-background-color: #1abc9c; /* A vibrant color for active state */
     -fx-text-fill: white;
 }
 
-/* --- Main Content Area Styling --- */
+
+
+
+
+
+/*   Main Content Area Styling   */
 .main-content {
     -fx-background-color: #ffffff; /* White background for the main content area */
     -fx-padding: 20px;
@@ -89,7 +89,7 @@
     -fx-effect: innershadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 0); /* Subtle inner shadow */
 }
 
-/* --- TableView Styling --- */
+/*   TableView Styling   */
 .table-view {
     -fx-base: #f7f9fa; /* Light background for the table */
     -fx-control-inner-background: #ffffff;
@@ -133,39 +133,11 @@
     -fx-text-fill: white;
 }
 
-/* --- Form Fields & Buttons in Main Content --- */
-.main-content .text-field {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #d0d0d0;
-    -fx-border-radius: 5px;
-    -fx-padding: 8px;
-    -fx-font-size: 14px;
-}
 
-.main-content .button {
-    -fx-background-color: #1abc9c; /* Green add button */
-    -fx-text-fill: white;
-    -fx-font-size: 14px;
-    -fx-padding: 10px 20px;
-    -fx-background-radius: 5px;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 3, 0, 0, 1);
-}
 
-.main-content .button:hover {
-    -fx-background-color: #16a085; /* Darker green on hover */
+.table-cell.align-center {
+    -fx-alignment: CENTER;
 }
-
-/* Style for remove/update buttons if they need different colors */
-.main-content .button.remove-button { /* You'd add .getStyleClass().add("remove-button") to the button */
-    -fx-background-color: #e74c3c;
-}
-.main-content .button.remove-button:hover {
-    -fx-background-color: #c0392b;
-}
-
-.main-content .button.update-button { /* You'd add .getStyleClass().add("update-button") to the button */
-    -fx-background-color: #f39c12;
-}
-.main-content .button.update-button:hover {
-    -fx-background-color: #e67e22;
+.table-cell.align-right {
+    -fx-alignment: CENTER-RIGHT;
 }
