@@ -24,8 +24,8 @@ import javafx.stage.Stage;
 public class InventoryApp extends Application {
 
     // Window size. If I ever want to read these from a config, they are in one place.
-    public static int wdScene = 1000;
-    public static int htScene = 700;
+    public static int wdScene = 1200;
+    public static int htScene = 740;
 
 
     //  I'd rather 'keep the DB manager out here (not inside start()) so I can close it in stop().
@@ -48,31 +48,26 @@ public class InventoryApp extends Application {
         // 2. The TableView instance (outside the Frame, so it can be shared)
         TableView<Product> productTable = new TableView<>();
 
-        // 3. Create the TextField instance. It needs to be created before it's passed to anything.
-        TextField searchInput = new TextField();
-
-        // 4. The Actions instance (passing it the DB and TableView)
+        // 3. The Actions instance (passing it the DB and TableView)
         // We cannot pass the TextField here because the Frame has not been created yet
         Actions appActions = new Actions(dbManager, productTable);
 
-        // 5. We create a new Frame instance (passing it the Actions and TableView)
+        // 4. We create a new Frame instance (passing it the Actions and TableView)
         Frame appFrame = new Frame(appActions, productTable);
 
-        // 6. We update the Actions instance to include the searchInput
-        appActions.setSearchInput(searchInput);
-
-        // 7. And set up the stage calling the Frame's getter method (getRootLayout)
+        // 5. And set up the stage calling the Frame's getter method (getRootLayout)
         Scene scene = new Scene(appFrame.getBorderPane(), wdScene, htScene);
 
-        // 8. Link the scene to the css file, in the resources' folder:
+        // 6. Link the scene to the css file, in the resources' folder:
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
 
-        // 9. Finally, we create a new stage:
+        // 7. Finally, we create a new stage:
         primaryStage.setTitle("Inventory Management System");
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        // Initial data load
+
+        //  REFRESH the table
         appActions.refreshTable();
     }
 
