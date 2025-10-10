@@ -1,0 +1,7 @@
+This is the second version of Module 4. 
+This part contains the 2nd version of the code:
+ - added Users and Suppliers table
+ - converted the classes to using Generics types
+ - created a table, field, etc. (a GUI) builder
+ - Renamed the classes according to the MVC paradigm, and
+ - Separated the login to db info into a config file
