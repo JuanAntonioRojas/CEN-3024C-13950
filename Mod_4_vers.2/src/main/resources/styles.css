@@ -1,0 +1,144 @@
+
+/* This CSS will make the window look better */
+
+
+.layout {
+    -fx-background-color: #87ceeb; /* A sky blue background */
+}
+
+.label {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 14px;
+}
+
+
+
+
+/*   Header Styling   */
+.header {
+    /*-fx-background-color: #34495e;*/
+    -fx-padding: 15px 20px;
+    -fx-alignment: center; /* This will center all the children within the HBox */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2); /* Subtle shadow */
+}
+
+.title {
+    -fx-font-family: "Algerian", sans-serif;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: blue;
+    -fx-alignment: center;
+    /*-fx-padding: 0 20px 0 0; !* Space after title *!*/
+}
+
+
+/*  The sidebar Vertical Box (VBox) */
+.leftNav {
+    -fx-background-color: #add8ee;  /* A light blue */
+    -fx-padding: 30px 10px 20px 10px; /* Top, Right, Bottom, Left */
+}
+.separator {
+    /* -fx-background-color: #add8ee; Dark gray line */
+    -fx-padding: 10px 0 10px 0;           /*  Some vertical space */
+}
+.tooltip {
+    -fx-font-size: 16px; /* Makes the font bigger */
+    -fx-background-color: #333333; /* Sets a dark background color */
+    -fx-text-fill: #FFFFFF; /* Sets the text color to white for contrast */
+}
+
+
+
+
+/*   Sidebar  */
+.sidebar {
+    -fx-background-color: #34495e; /* Darker blue/gray for sidebar */
+    -fx-padding: 20px 10px;
+    -fx-pref-width: 200px; /* Fixed width for the sidebar */
+}
+
+.sidebar .button {
+    -fx-background-color: #3e566d; /* Slightly different shade */
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 12px 15px;
+    -fx-background-radius: 5px;
+    -fx-alignment: CENTER_LEFT; /* Align text to the left */
+}
+
+.sidebar .button:hover {
+    -fx-background-color: #4a6784; /* Highlight on hover */
+}
+
+/*  Selected sidebar button  */
+.sidebar .button:focused {
+    -fx-background-color: #1abc9c; /* A vibrant color for active state */
+    -fx-text-fill: white;
+}
+
+
+
+
+
+
+/*   Main Content Area Styling   */
+.main-content {
+    -fx-background-color: #ffffff; /* White background for the main content area */
+    -fx-padding: 20px;
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 0 0 0 1px; /* Left border to separate from sidebar */
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 0); /* Subtle inner shadow */
+}
+
+/*   TableView Styling   */
+.table-view {
+    -fx-base: #f7f9fa; /* Light background for the table */
+    -fx-control-inner-background: #ffffff;
+    -fx-background-color: #ffffff;
+    -fx-table-cell-border-color: #d0d0d0;
+    -fx-table-header-border-color: #d0d0d0;
+    -fx-padding: 10px;
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 1px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #f2f2f2; /* Light gray header */
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 40px;
+    -fx-border-width: 0 1px 1px 0;
+    -fx-border-color: #d0d0d0;
+}
+
+.table-view .column-header .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.table-row-cell {
+    -fx-background-color: -fx-table-cell-border-color, #ffffff;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:odd {
+    -fx-background-color: -fx-table-cell-border-color, #f7f9fa; /* Zebra striping */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #1abc9c; /* Highlight selected row */
+    -fx-text-fill: white;
+}
+
+
+
+.table-cell.align-center {
+    -fx-alignment: CENTER;
+}
+.table-cell.align-right {
+    -fx-alignment: CENTER-RIGHT;
+}
