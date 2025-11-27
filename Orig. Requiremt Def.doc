@@ -1,4 +1,6 @@
 1. Introduction
+
+
 The goal of requirements engineering is to understand what various stakeholders need from a system, and to document these needs in a way that they can be analyzed, communicated, and agreed upon.” (Ian Sommerville, Chapter 4, p. 83)
 1.1. Purpose
 This document aims at defining the software requirements for my inventory application. This requirements document will serve as a guide for clients, and a future development team, with the understanding that all aspects of the system are well-covered and agreed upon. My application integrates a friendly UI with a powerful Database for inventory, user and supplier management.
@@ -260,5 +262,6 @@ The diagram shows the Actor selecting a record, clicking "View / Update," the sy
 
 8.4. UML Use Case: Low Stock Check (Custom Action)
 This oneshows the Actor clicking the “Low Inventory” button, the system querying the full product list, and  displaying the "Purchase Order" popup to the user.
+
 
 
