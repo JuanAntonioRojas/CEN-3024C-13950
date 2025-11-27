@@ -101,3 +101,137 @@ _33_ViewTables: This is a factory that builds the whole table (like the product 
 _34_ViewColumnFactory: This is a helper for my helper! It builds the individual columns for the table, and it's smart enough to right-align and format my numbers (like $1,200.50).
 _35_CtrlAdd: This is my "Pop-Up Window" factory. It's a super-clever, reusable class. Instead of building a "New Product" window and a "New User" window from scratch, I just use this one class. I just tell it what fields to show, and POOF!—it builds a perfect pop-up dialog box for me. It's the king of my "Don't Repeat Yourself" strategy.
 
+
+
+Testing Strategy (How We'll Check Our Work)
+
+You can't just build a car and hope the brakes work, right? You gotta test it. Here's the plan. [Sommerville here on Testing, Ch. 8-9]
+
+1. Unit Testing (Checking the Parts)
+This is where we test the tiniest little pieces all by themselves to make sure they're not broken. We use a tool called JUnit for this. It's like checking the spark plugs before they go in the engine.
+Example: Testing my Utils class
+I would create a this new file called _50_MainTests
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class _50_MainTests {
+
+    @Test
+    public void testPasswordHashing() {
+        String password = "IAmPassword123";
+        String hash = Utils.hash(password);
+        
+        // Test 1: Is the hash not empty?
+        assertNotNull(hash);
+        
+        // Test 2: Does the original password "verify" against the hash?
+        assertTrue(Utils.verify(password, hash));
+        
+        // Test 3: Does a WRONG password fail?
+        assertFalse(Utils.verify("WrongPassword!", hash));
+    }
+
+    @Test
+    public void testEmailValidator() {
+        assertTrue(Utils.isValidEmail("good@email.com"));
+        assertFalse(Utils.isValidEmail("bademail.com"));
+        assertFalse(Utils.isValidEmail("bad@email"));
+        assertFalse(Utils.isValidEmail(null));
+    }
+}
+
+
+
+2. Integration Testing (Checking How Parts Fit)
+
+This is where we see if the pieces work together. Can the "client phone" really talk to the "server operator" and get a real answer from the "database guy"? We're testing the integration of the layers.
+Example: Testing the real Login Flow:
+This test would  START THE SERVER first, then run this:
+
+@Test
+public void testFullLoginIntegration() {
+    // 1. Create the client's "phone"
+    _0_ClientServerCommunicator communicator = new _0_ClientServerCommunicator();
+    
+    try {
+        // 2. "Dial" the server
+        communicator._0a_connect();
+        
+        // 3. Send a REAL login request for a user we know is in the test DB
+        String response = communicator._0b_attemptToLogin("real_user@test.com", "real_pass123");
+        
+        // 4. Check the server's REAL response!
+        assertTrue(response.startsWith("SUCCESS"));
+        
+        communicator._0e_disconnect();
+        
+    } catch (IOException e) {
+        fail("Test failed due to network error: " + e.getMessage());
+    }
+}
+
+
+
+3. User Interface (UI) Testing (The "Robot Test Drive")
+
+This is the final test drive. We use a robot (a framework called TestFX) to actually launch the app, click the buttons, and type in the fields, just like a real person.
+Example: Testing the Login Screen with TestFX:
+This is a test that launches the full JavaFX app
+
+public class LoginScreenTest extends ApplicationTest {
+
+    @Override
+    public void start(Stage stage) {
+        // Tell TestFX to launch our main app
+        new _0_Main().start(stage);
+    }
+    
+    @Test
+    public void testSuccessfulLogin() {
+        // 1. Robot types in the email field
+        clickOn("#emailField").write("admin@test.com");
+        
+        // 2. Robot types in the password field
+        clickOn("#passwordField").write("adminpass");
+        
+        // 3. Robot clicks the login button
+        clickOn("#loginButton");
+        
+        // 4. THE TEST: Did the product table (from the main scene) show up?
+        // We look for a component with the ID "#productTable"
+        verifyThat("#productTable", isVisible());
+    }
+}
+
+
+
+Project Management  (How We're Managing This Whole Thing)
+
+A project this big did get real messy, real fast. You can't just... start, as I naively did in the beginning. You need a plan.
+We're using an Agile method [Sommerville on Agile, Ch. 3] because “things change” all the time.
+Instead of one giant, scary deadline, we break the work into small "sprints" (like 1- or 2-week mini-projects).
+    1. Sprint 1: "Just get a window to open. Oh, and get the database to connect."
+    2. Sprint 2: "Build the server and client. Get them to talk. Get the login to work."
+    3. Sprint 3: "Build all the 'Product' stuff. Add, remove, update, refresh."
+    4. Sprint 4: "Build all the 'User' stuff for the admin to manage."
+    5. Sprint 5: "Testing, writing this README, and cleaning up the mess."
+We're tracking all this work in a tool like Jira (or Trello, or Asana, whatever). All our "chores" (tasks, bugs, new ideas) go into a "Product Backlog." For each sprint, we just grab a few chores, put 'em in the "Sprint Backlog," and get 'em done.
+Easy as pie.
+
+
+
+How to Run This Thing
+
+1. Run the Server (The "Back Office")
+    1. We made sure we had a MySQL database set up.
+    2. Next, we went into the server-side code and find/create config.properties. I filled this in with the database URL, username, and password.
+    3. I also needed to create the server.keystore (the server's ID badge) and the client.truststore (the client's guest list) files.
+    4. Finally we run the main method in _0_InventoryServer. We should see a message saying it's "Waiting for client connections..."
+    
+2. Run the Client (The "Storefront")
+    1. We made sure the client.truststore file is in the client's main folder so it can find it.
+    2. Then we run the main method in _0_Main.
+    3. The login screen should pop up.
+    4. Finally we try to log in (or sign up for a new account).
+
