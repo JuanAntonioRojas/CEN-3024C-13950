@@ -5,7 +5,9 @@ Welcome to My Inventory System Project
 This here is a project for my Software Engineering I class. It's an inventory management system, but it's got a bit of a story. It started out as one thing and, well, it kinda evolved into this whole big client-server-database contraption.
 It's got a "front end" (the client) that the user sees, built with JavaFX, and it's got a "back end" (the server) that does all the heavy lifting and talks to a MySQL database.
 
+
 The Story: How This Program Got Built
+
 This project didn't start out all complicated. It's had a "v2" and now a "v3."
 1: The "Old Way" (AKA The Monolith)
 At first, I built this as a simple, 2-tier app. The "classic way" we learned in our first programming class.
@@ -16,7 +18,10 @@ This was like giving every single bank teller a key to the main vault. It "worke
     • It was messy: My "view" code was all tangled up with "database" code.
     • It was risky: My database password was just sitting there in the app. If anyone got the app, they had the keys to the kingdom. In fact, in my very first version I had the Username and Password, hardcoded into the code. Big mistake.
     • It was a nightmare to change: If I wanted to change one little thing about the database, I had to go hunt down every single file that touched it. No thank you.
+
+    
 2: The "New Way" (The 3-way Split)
+
 This is where the 3-Tier Architecture comes in. This was the "Aha!" moment for me. [Sommerville, Ch. 17, talks about 3-Tier/Layered Architecture, on “separation of concerns”].
 I decided to split the project into two separate pieces that talk to each other over a "phone line."
     1. The Client (The "Storefront"): This is the JavaFX app. It's the "Presentation" tier. It's got no “brains” (logic) in it. It’s as dumb as a box of rocks, but on purpose. It doesn't know anything about the database, because of this new “separation of concerns.”
@@ -45,7 +50,9 @@ Even if a hacker steals my entire database, all they get is a list of these supe
 In my _10_ModelUserDB on the server, I added a login attempt counter. If you get the password wrong, the server makes a note. If you do it 5 times... OOPS! The account gets locked… Out of luck: “Go see the Admin.”
 This stops those "brute force" robots that just try to guess your password (admin, 12345, password...) a million times a second.
 
+
 The Class Breakdown
+
 Here's the rundown of the most important files and what they do. This grouping system is super clear just by looking at the first number:
     • 0X_ Classes: This is the "Plumbing" (Core, Server, Network).
     • 1X_ Classes: This is the "Data" (Models and DB classes).
@@ -55,6 +62,7 @@ NOTE: Each and every class has methods and each and every method is prefixed wit
 
 
 0X_ (The "Plumbing & Wiring")
+
 _00_Utils: This is the first file in the list, the "zeroth" thing for everything else to stand on. It's the foundation, a shared toolbox that contains all the handyman utilities (like the hash() and verify() password tools) that both the Client and Server need.
 _01_InventoryServer: This is the big boss. You run this file first to start the server. It opens the "warehouse" (the port), hooks up the "master ledger" (database connection), and hires a "team of workers" (the ExecutorService). After that, it just waits for the phone to ring.
 _02_ClientHandler: This is the server "worker" who answers the phone. The boss (_01_InventoryServer) hires a brand new one for every single client that calls. This worker's job is to listen for commands ("LOGIN::...", "GET_ALL_PRODUCTS::...") and route them to the right "department specialist" (the _1X_ DB classes).
@@ -63,6 +71,7 @@ _04_Main: The "theater manager." His only job is to open the theater doors, turn
 _05_ConfigLoader: This is the server's "little black book." It's a simple helper that reads the config.properties file. This is where we keep all the secret stuff—like the database password and the keystore password—so we're not hard-coding our secrets right into the app. That's a big no-no.
 
 1X_ (The "Data Files & Accountants")
+
 _11_ModelProd, _13_ModelUser, _15_ModelSupplier: These are the "data buckets" (Models). They're just simple classes that hold data. They don't do anything. A _13_ModelUser object just holds one user's info (name, email, etc.).
 _12_ModelProdDB, _14_ModelUserDB, _16_ModelSupplierDB: These are the "department specialists" or "accountants." They are the Data Access Objects (DAO).
     • The _14_ModelUserDB guy knows everything about the _13_ModelUser object (how to add 'em to the database, how to check their password, etc.).
@@ -72,6 +81,7 @@ These three classes are the only ones allowed to touch the database. They are th
 
 
 2X_ (The "Brains" / Controllers)
+
 _21_CtrlLogin: This is the "front desk" clerk. It handles the login button. It grabs the email & password and hands them to the _03_ClientServerCommunicator. When it gets a "SUCCESS" response from the server, it doesn't build the main screen itself. Instead, it just makes the call to the _23_MainSceneBuilder and says, "This fella's good. Build 'em the main screen!"
 _22_CtrlSignup: Another "front desk" clerk. It handles the sign-up pop-up. It grabs all the new info, tells _00_Utils to hash the password, and hands the new _13_ModelUser object to the _03_ClientServerCommunicator, which in turn passes it to the _02_ClientHandler, which then tells the _14_ModelUserDB to stick it in the database.
 _23_MainSceneBuilder: The "Master Assembler" on the factory line. The _21_CtrlLogin clerk doesn't know how to build the complicated main screen, so it delegates the job to this specialist.
@@ -85,6 +95,7 @@ _27_CtrlRequisition.java: This class's only job will be to build and show a pop-
 
 
 3X_ (The "Lego Bricks" / View Helpers)
+
 These are all my "View" helpers. I wrote these so I would Not Repeat Myself (DRY principle).
 _31_ViewGUIBuilder: Why build a button from scratch every time? This class is a factory that makes me a styled button (_31f_Btn) or text field (_31b_TextField) every time.
 _32_ViewFrame: This builds the main window's layout (the header, the left-nav bar, and the big empty space in the center for the table).
@@ -92,3 +103,4 @@ _33_ViewTables: This is a factory that builds the whole table (like the product 
 _34_ViewColumnFactory: This is a helper for my helper! It builds the individual columns for the table, and it's smart enough to right-align and format my numbers (like $1,200.50).
 _35_CtrlAdd: This is my "Pop-Up Window" factory. It's a super-clever, reusable class. Instead of building a "New Product" window and a "New User" window from scratch, I just use this one class. I just tell it what fields to show, and POOF!—it builds a perfect pop-up dialog box for me. It's the king of my "Don't Repeat Yourself" strategy.
 
+4X_ are the new Testing classes.
