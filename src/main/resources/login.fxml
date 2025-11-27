@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+
+
+
+
+
+
+<!-- This StackPane is the entire login window -->
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.ims._21_CtrlLogin" prefHeight="750.0" prefWidth="500.0">
+
+    <ImageView fitHeight="750.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@img/Acme.jpg" />
+        </image>
+    </ImageView>
+
+    <VBox alignment="CENTER" spacing="20.0" styleClass="login-box"  maxHeight="150.0" maxWidth="250.0" StackPane.alignment="TOP_LEFT">
+        <!-- This StackPane is the blue login box, but the previous StackPane.alignment refers to the parent StackPane -->
+        <StackPane.margin>
+            <Insets top="150" left="60" />
+        </StackPane.margin>
+
+        <children>
+            <GridPane hgap="10.0" vgap="10.0">
+                <children>
+
+                    <!-- USERNAME -->
+                    <Label text="  User email:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <TextField fx:id="emailField" promptText="WileCoyote@gmail.com"
+                               GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="2" />
+
+                    <!-- PASSWORD -->
+                    <Label text="  Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <PasswordField fx:id="passwordField" promptText="Abc@123!"
+                                   GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.columnSpan="2" />
+
+                    <!-- SIGN UP -->
+                    <Button fx:id="signUpButton" onAction="#_21c_handleSignUp" text="Sign Up"
+                            GridPane.columnIndex="1" GridPane.rowIndex="2" /> <!-- Decoupling -->
+
+                    <!-- LOGIN -->
+                    <Button fx:id="loginButton" onAction="#_21b_handleLogin" text="Login"
+                            GridPane.columnIndex="2" GridPane.rowIndex="2" defaultButton="true" />
+                </children>
+            </GridPane>
+        </children>
+    </VBox>
+</StackPane>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
